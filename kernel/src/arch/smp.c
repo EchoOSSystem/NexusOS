@@ -25,6 +25,7 @@ void smp_cpu_init(struct limine_mp_info *mp_info) {
     gdt_reinit();
     idt_reinit();
     vmm_switch_pagemap(kernel_pagemap);
+    smp_cpu_list[mp_info->lapic_id]->pagemap = kernel_pagemap;
     smp_cpu_list[mp_info->lapic_id]->id = mp_info->lapic_id;
     lapic_init();
     smp_cpu_list[mp_info->lapic_id]->lapic_ticks = lapic_init_timer();

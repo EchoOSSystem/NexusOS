@@ -110,8 +110,8 @@ void vmm_map_range(pagemap_t *pagemap, uint64_t vaddr, uint64_t paddr, uint64_t 
 
 void vmm_switch_pagemap(pagemap_t *pagemap) {
     __asm__ volatile ("mov %0, %%cr3" : : "r"(PHYSICAL((uint64_t)pagemap->pml4)) : "memory");
-    if (smp_started)
-        this_cpu()->pagemap = pagemap;
+    //if (smp_started)
+      //  this_cpu()->pagemap = pagemap;
 }
 
 pagemap_t *vmm_new_pagemap() {

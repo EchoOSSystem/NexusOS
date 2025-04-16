@@ -29,8 +29,9 @@ uint64_t lapic_read(uint32_t reg) {
         return read_msr(reg);
     }
     uint64_t addr = lapic_address + reg;
-    return *((volatile uint32_t*)addr);
+    return (uint64_t)*((volatile uint32_t*)addr);
 }
+
 
 void lapic_write(uint32_t reg, uint64_t value) {
     if (x2apic) {
